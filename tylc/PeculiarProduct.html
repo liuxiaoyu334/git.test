@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <link rel="stylesheet" type="text/css" href="./styles/zepto.alert.css">
+    <link rel="stylesheet" type="text/css" href="./styles/global.css">
+    <link rel="stylesheet" type="text/css" href="./styles/popup.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title></title>
+</head>
+<body>
+<div id="addpreculiar" class="preculiar" style="display: none">
+    <div  class = "preculiar preculiar-top"><img src="./images/financial_Privilegedcode.png"  /></div>
+    <div class="preculiar preculiar-font"><p>请输入你的特权码</p></div>
+    <div class = "preculiar preculiar-txt"><input id="preculiarid" type="text" value=""  maxlength="11" onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9]/g,'')"></div>
+    <div class="preculiar others" id = "getTProduct" style="line-height:35px;"><p>获取专属产品</p></div>
+    <div class="product-buynow-comment">
+        <p style="text-align: left">
+           <span style="color: #000000;"> Q：什么是特权码？特权码有什么用？</span></br>
+            A：特权码是翼支付通过一定渠道，包括但不限于短信、电信营业厅等途径下发给用户的特定理财码，用户使用特权码在甜橙理财平台可以获取专属理财产品，收获意想不到的惊喜。</br>
+            <span style="color: #000000;">Q：如何获取特权码？</span></br>
+            A：通过短信方式获得，我们会不定期的通过短信方式向我们的优质客户推送特权码； 您在营业厅办理相关业务时也有可能获取特权码。</br>
+        </p>
+
+    </div>
+</div>
+
+
+<div id="main-scroll" style="margin-top: -1px">
+    <ul id="product" class="product-list">
+    </ul>
+    <div class="others" style="margin-bottom:10px;margin-top: -5px;line-height:30px; text-align: center;"><p>获取更多特权产品</p></div>
+</div>
+
+<div id="temp"   style="display:none; margin-top: 1em;"  >
+    <li data-href="./product.html?merchantId=$merchantId$&code=$code$&goType=PeculiarProduct"  class="product-list-item">
+        <div class="product-list-main">
+            <div class="row" style="width:100%;padding-top:1em;">
+                <div class="hot">$hotImage$</div><!--$hotImage$  <img src="./images/huangguan.png"/>-->
+                <table   width="100%"  >
+                    <tbody>
+                    <tr>
+                        <td width="70%" >
+                            <div   class="mt-top fl"><p class="product-title">$name$</p></div>
+                        </td>
+                        <td class="text-right pd-right">
+                            <p class="rate">$yieldRate$<span>%</span></p>
+                            <p class="title">预期年化收益</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="clear:both;"></div>
+            <div class="row" style="margin-top: -0.5em;height: 40px">
+                <div class="col col-45 text-left">
+                    <div class="remain-time">
+                        <p class="title">距募集结束还剩</p>
+                        <p class="time">$leftTime$</p>
+                    </div>
+                </div>
+                <div class="col col-20 text-center">
+                    <p class="remain-limit">剩余额度$remain$%</p>
+                    <p class="process text-center"><span class="process-bar" style="width:$remain_pct$%;"></span></p>
+                </div>
+                <div class="col col-30 text-right pd-right" style="margin-top: 0.3em;margin-left: 5%">
+                    <p class="least"><br/>起购金额<span>$buyStartAmt$</span>元</p>
+                </div>
+            </div>
+        </div>
+    </li>
+</div>
+
+<div id="tempSellout"   style="display:none;" >
+    <li data-href="" class="product-list-item">
+        <div class="product-list-main">
+            <div class="sellout"><img src="./images/crown.png"/></div>
+            <div class="row" style="width:100%">
+                <table width="100%">
+                    <tbody>
+                    <tr>
+                        <td width="70%">
+                            <div class="mt-top  fl"><p class="product-title-sq">$name$</p></div>
+                        </td>
+                        <td class="text-right  pd-right">
+                            <p class="rate-sq">$yieldRate$<span>%</span></p>
+                            <p class="title">预期年化收益</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="clear:both;"></div>
+            <div class="row" style="margin-top: -0.5em;height: 40px">
+                <div class="col col-45 text-left">
+                    <div class="remain-time">
+                        <p class="title">募集用时</p>
+                        <p class="time">$useTime$</p>
+                    </div>
+                </div>
+                <div class="col col-20 text-center">
+                    <p class="remain-limit">　</p>
+                    <p class="process text-center"><span class="process-bar" style="width:0%;"></span></p>
+                </div>
+                <div class="col col-30 text-right pd-right" style="margin-top: 0.3em;margin-left: 5%">
+                    <p class="least"><br/>起购金额$buyStartAmt$元</p>
+                </div>
+            </div>
+        </div>
+    </li>
+</div>
+
+<div id="tempPresale"  style="display:none;"   >
+    <li data-href=""  class="product-list-item bg-projj">
+        <div class="product-list-main bg-projj">
+            <div class="projj"><img width="60px" height="20px"   src="./images/jjfs.png"/></div>
+            <div class="row" style="width:100%">
+                <table width="100%"  >
+                    <tbody>
+                    <tr>
+                        <td width="70%" >
+                            <div   class="mt-top fl"><p class="product-title">$name$</p></div>
+                        </td>
+                        <td class="text-right pd-right">
+                            <p class="rate">$yieldRate$<span>%</span></p>
+                            <p class="title">预期年化收益</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="clear:both;"></div>
+            <div class="row" style="margin-top: -0.5em;height: 40px">
+                <div class="col col-45 text-left">
+                    <div class="remain-time">
+                        <p class="title">距募集开售还剩</p>
+                        <p class="time">$sellCreTime$</p>
+                    </div>
+                </div>
+                <div class="col col-20 text-center">
+                    <p class="remain-limit">剩余额度100%</p>
+                    <p class="process text-center"><span class="process-bar" style="width:0%;"></span></p>
+                </div>
+                <div class="col col-30 text-right pd-right" style="margin-top: 0.3em;margin-left: 5%">
+                    <p class="least"><br/>起购金额<span>$buyStartAmt$</span>元</p>
+                </div>
+            </div>
+        </div>
+    </li>
+</div>
+<div id="invest-info" class="invest-info">
+
+</div>
+
+
+
+<script type="text/javascript" src="file:///android_asset/bestpay.html5.js"></script>
+<script type="text/javascript" src="./js/zepto.min.js"></script>
+<script type="text/javascript" src="./js/zepto.alert.js"></script>
+<script type="text/javascript" src="./js/dialog.js"></script>
+<script type="text/javascript" src="./js/popup.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/base.js"></script>
+<script type="text/javascript" src="./js/tianyi.js"></script>
+<script type="text/javascript">
+    ;(function($){
+        //设置头部
+        setTitle(TitleName.PeculiarProduct);
+        //获取我的特权码
+        InitMyPeculiar();
+
+        /*去掉iphone手机滑动默认行为*/
+        $('body').on('touchmove', function (event) {
+            if(myPopup){
+                event.preventDefault();
+            }
+        });
+
+    })(Zepto);
+</script>
+
+</body>
+</html>

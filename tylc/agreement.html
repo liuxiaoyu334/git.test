@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport">
+<link rel="stylesheet" type="text/css" href="./styles/global.css">
+</head>
+
+
+
+<body>
+<div id="agreement" style="background:#ffffff;padding: 1em;"></div>
+
+<script type="text/javascript" src="file:///android_asset/bestpay.html5.js"></script>
+<script type="text/javascript" src="./js/zepto.min.js"></script>
+<script type="text/javascript" src="./js/common.js"></script>
+<script type="text/javascript" src="./js/base.js"></script>
+<script type="text/javascript">
+;(function($){
+	//获取协议文档ID
+	var id = geURLParam("id");
+	var url = "tpl/" + id + ".htm";
+	$("#agreement").load(url);
+})(Zepto);
+</script>
+</body>
+</html>
